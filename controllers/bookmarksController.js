@@ -31,4 +31,26 @@ bookmarks.get("/:index", (req, res) => {
   }
 });
 
+// update
+bookmarks.put("/:index", bookmarkValidator, (req, res) => {
+  const { index } = req.params;
+  if (bookmarksArray[index]) {
+    bookmarksArray[index] = req.body;
+    res.status(200).json(bookmarksArray[index]);
+  } else {
+    res.status(404).json({ error: "Not Found" });
+  }
+});
+
+//delete
+bookmarks.delete("/:index", (req, res) => {
+  const { index } = req.params;
+  if (bookmarksArray[index]) {
+    const deletedBookmark = bookmarksArray.splice(index, 1); // returns deleted bookmark
+    res.status(200).json(bookmarksArray);
+  } else {
+    res.status(404).json({ error: "Not Found" });
+  }
+});
+
 module.exports = bookmarks;
