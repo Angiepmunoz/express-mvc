@@ -1,9 +1,11 @@
 // DEPENDENCIES
 const express = require("express");
+const cors = require("cors");
 const bookmarksController = require("./controllers/bookmarksController.js");
 
 // CONFIGURATION
 const app = express();
+app.use(cors()); // cors middleware allows cross-origin requests
 app.use(express.json()); // json middleware parses incoming requests with JSON payloads
 
 // ROUTES
