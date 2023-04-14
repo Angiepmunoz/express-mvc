@@ -11,7 +11,7 @@ bookmarks.get("/", (req, res) => {
 });
 
 // create - add a new bookmark
-bookmarks.post("/", bookmarkValidator, (req, res) => {
+bookmarks.post("/", bookmarkValidator, (req, res) => { //bookmarks
   console.log("POST /bookmarks", req.body);
 
   // In the future, a SQL Database will replace this array
